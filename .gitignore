@@ -4,6 +4,3 @@
 /.settings/
 .classpath
 .project
-gradlew
-gradlew.bat
-/gradle/
