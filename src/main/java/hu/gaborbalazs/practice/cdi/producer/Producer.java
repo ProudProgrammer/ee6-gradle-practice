@@ -1,4 +1,4 @@
-package hu.gaborbalazs.practice.cdi;
+package hu.gaborbalazs.practice.cdi.producer;
 
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;

@@ -1,4 +1,4 @@
-package hu.gaborbalazs.practice.managedbean;
+package hu.gaborbalazs.practice.jsf.bean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +10,7 @@ import javax.inject.Inject;
 
 import org.jboss.logging.Logger;
 
+import hu.gaborbalazs.practice.cdi.bean.CDITestBean;
 import hu.gaborbalazs.practice.ejb.BookEJB;
 import hu.gaborbalazs.practice.entity.Book;
 
@@ -19,6 +20,9 @@ public class BookController {
 	
 	@Inject
 	Logger logger;
+	
+	@Inject
+	CDITestBean cdiTestBean;
 	
 	@EJB
 	private BookEJB bookEJB;
@@ -46,6 +50,7 @@ public class BookController {
 
 	public List<Book> getBookList() {
 		logger.info(">> getBookList()");
+		logger.info(cdiTestBean);
 		bookList = bookEJB.findBooks();
 		logger.info("<< getBookList()");
 		return bookList;
