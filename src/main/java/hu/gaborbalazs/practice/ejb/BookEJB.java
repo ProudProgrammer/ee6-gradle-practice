@@ -14,6 +14,17 @@ public class BookEJB {
 
     @PersistenceContext(unitName = "gbPU")
     private EntityManager em;
+    
+    public Book findById(Long id) {
+    	Book book = em.find(Book.class, id);
+    	return book;
+    }
+    
+    public Book save(Book book) {
+    	book = em.merge(book);
+    	em.flush();
+    	return book;
+    }
 
     public List<Book> findBooks() {
         TypedQuery<Book> query = em.createNamedQuery("findAllBooks", Book.class);

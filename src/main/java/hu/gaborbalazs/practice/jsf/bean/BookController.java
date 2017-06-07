@@ -17,26 +17,59 @@ import hu.gaborbalazs.practice.entity.Book;
 @ManagedBean(name = "bookController")
 @RequestScoped
 public class BookController {
-	
+
+	public class PriceChanger {
+
+		private Long id = 1L;
+		private Float price = 100f;
+
+		public Long getId() {
+			return id;
+		}
+
+		public void setId(Long id) {
+			this.id = id;
+		}
+
+		public Float getPrice() {
+			return price;
+		}
+
+		public void setPrice(Float price) {
+			this.price = price;
+		}
+	}
+
 	@Inject
 	Logger logger;
-	
+
 	@Inject
 	CDITestBean cdiTestBean;
-	
+
 	@EJB
 	private BookEJB bookEJB;
 
+	private PriceChanger priceChanger = new PriceChanger();
 	private Book book = new Book();
 	private List<Book> bookList = new ArrayList<>();
 
-	public BookController() {}
+	public BookController() {
+	}
 
 	public String doCreateBook() {
-		logger.info(">> doCreateBook()");
+		logger.debug(">> doCreateBook()");
 		book = bookEJB.createBook(book);
 		bookList = bookEJB.findBooks();
-		logger.info("<< doCreateBook()");
+		logger.debug("<< doCreateBook()");
+		return "listBooks.xhtml";
+	}
+
+	public String updateBook() {
+		logger.debug(">> updateBook()");
+		Book book = bookEJB.findById(priceChanger.getId());
+		book.setPrice(book.getPrice() + priceChanger.getPrice());
+		bookEJB.save(book);
+		logger.debug("<< updateBook()");
 		return "listBooks.xhtml";
 	}
 
@@ -50,7 +83,6 @@ public class BookController {
 
 	public List<Book> getBookList() {
 		logger.info(">> getBookList()");
-		logger.info(cdiTestBean);
 		bookList = bookEJB.findBooks();
 		logger.info("<< getBookList()");
 		return bookList;
@@ -58,5 +90,13 @@ public class BookController {
 
 	public void setBookList(List<Book> bookList) {
 		this.bookList = bookList;
+	}
+
+	public PriceChanger getPriceChanger() {
+		return priceChanger;
+	}
+
+	public void setPriceChanger(PriceChanger priceChanger) {
+		this.priceChanger = priceChanger;
 	}
 }
