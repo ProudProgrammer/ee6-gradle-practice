@@ -1,2 +1,2 @@
 ## ee6-gradle-practice
-# Personal practicing project
+Personal practicing project
