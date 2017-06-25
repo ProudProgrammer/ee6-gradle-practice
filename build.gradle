@@ -34,5 +34,11 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.jboss.logging/jboss-logging
 	compile group: 'org.jboss.logging', name: 'jboss-logging', version: '3.3.1.Final'
 	
+	// https://mvnrepository.com/artifact/org.apache.deltaspike.modules/deltaspike-data-module-impl
+	runtime group: 'org.apache.deltaspike.modules', name: 'deltaspike-data-module-impl', version: '1.8.0'
+	
+	// https://mvnrepository.com/artifact/org.apache.deltaspike.modules/deltaspike-data-module-api
+	compile group: 'org.apache.deltaspike.modules', name: 'deltaspike-data-module-api', version: '1.8.0'
+		
 }
 

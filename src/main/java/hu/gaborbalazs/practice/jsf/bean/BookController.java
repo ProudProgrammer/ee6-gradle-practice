@@ -41,10 +41,10 @@ public class BookController {
 	}
 
 	@Inject
-	Logger logger;
+	private Logger logger;
 
 	@Inject
-	CDITestBean cdiTestBean;
+	private CDITestBean cdiTestBean;
 
 	@EJB
 	private BookEJB bookEJB;
