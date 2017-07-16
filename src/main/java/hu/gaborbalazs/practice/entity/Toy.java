@@ -6,19 +6,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.google.common.base.MoreObjects;
+
 @Entity
 public class Toy {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String name;
-	
+
 	@ManyToOne
 	private Child owner;
 
-	
 	public int getId() {
 		return id;
 	}
@@ -42,5 +43,9 @@ public class Toy {
 	public void setOwner(Child owner) {
 		this.owner = owner;
 	}
-	
+
+	@Override
+	public String toString() {
+		return MoreObjects.toStringHelper(this).add("id", getId()).add("name", getName()).toString();
+	}
 }
