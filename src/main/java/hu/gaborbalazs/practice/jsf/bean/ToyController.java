@@ -1,6 +1,9 @@
 package hu.gaborbalazs.practice.jsf.bean;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -78,5 +81,24 @@ public class ToyController {
 		logger.info(">> getToyNames()");
 		logger.info("<< getToyNames()");
 		return toyRepository.findAllNameColumn();
+	}
+
+	public void asyncTest() throws InterruptedException {
+		logger.info(">> asyncTest()");
+		List<Future<Integer>> requestList = new ArrayList<>();
+		List<Integer> resultList = new ArrayList<>();
+		int requests = 1000;
+		for (int i = 0; i < requests; i++) {
+			requestList.add(toyEJB.asyncMethod());
+		}
+		for (Future<Integer> f : requestList) {
+			try {
+				resultList.add(f.get());
+			} catch (ExecutionException e) {
+				logger.error("Error: " + e.getMessage());
+			}
+		}
+		logger.info("ResultList size: " + resultList.size() + ", ResultList: " + resultList);
+		logger.info("<< asyncTest()");
 	}
 }
