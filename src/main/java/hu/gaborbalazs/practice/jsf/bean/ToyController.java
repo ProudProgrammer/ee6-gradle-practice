@@ -59,6 +59,14 @@ public class ToyController {
 			logger.info("No child found");
 		}
 		logger.info("Child2: " + child2);
+		
+		Child child3 = null;
+		try {
+			child3 = childRepository.findByIdFetchParent(3);
+		} catch (NoResultException e) {
+			logger.info("No child found");
+		}
+		logger.info("Child3: " + child3);
 
 		logger.info("<< init()");
 	}
@@ -79,15 +87,16 @@ public class ToyController {
 
 	public List<Toy> getToyNames() {
 		logger.info(">> getToyNames()");
-		logger.info("<< getToyNames()");
-		return toyRepository.findAllNameColumn();
+		List<Toy> toys = toyRepository.findAllNameColumn();
+		logger.info("<< getToyNames(): " + toys);
+		return toys;
 	}
 
 	public void asyncTest() throws InterruptedException {
 		logger.info(">> asyncTest()");
 		List<Future<Integer>> requestList = new ArrayList<>();
 		List<Integer> resultList = new ArrayList<>();
-		int requests = 1000;
+		int requests = 3;
 		for (int i = 0; i < requests; i++) {
 			requestList.add(toyEJB.asyncMethod());
 		}

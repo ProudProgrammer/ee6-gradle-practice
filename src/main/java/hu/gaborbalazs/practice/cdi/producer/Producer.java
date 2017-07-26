@@ -1,28 +1,20 @@
 package hu.gaborbalazs.practice.cdi.producer;
 
-import javax.enterprise.inject.Disposes;
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceUnit;
+import javax.persistence.PersistenceContext;
 
 import org.jboss.logging.Logger;
 
 public class Producer {
 
-	@PersistenceUnit(unitName = "gbPU")
-	private EntityManagerFactory emf;
+	@PersistenceContext(unitName = "gbPU")
+	private EntityManager em;
 
 	@Produces
-	public EntityManager create() {
-		return emf.createEntityManager();
-	}
-
-	public void close(@Disposes EntityManager em) {
-		if (em.isOpen()) {
-			em.close();
-		}
+	public EntityManager createEntityManager() {
+		return em;
 	}
 
 	@Produces

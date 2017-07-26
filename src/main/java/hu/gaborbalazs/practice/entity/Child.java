@@ -1,6 +1,5 @@
 package hu.gaborbalazs.practice.entity;
 
-import java.text.MessageFormat;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -11,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+
+import com.google.common.base.MoreObjects;
 
 @Entity
 public class Child {
@@ -51,6 +52,7 @@ public class Child {
 
 	@Override
 	public String toString() {
-		return MessageFormat.format("[Child: id={0}, name={1}, parents={2}]", getId(), getName(), getParents());
+		return MoreObjects.toStringHelper(this).add("id", getId()).add("name", getName()).add("parents", getParents())
+				.toString();
 	}
 }
