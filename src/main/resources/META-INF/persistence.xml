@@ -6,7 +6,6 @@
 
 	<persistence-unit name="gbPU" transaction-type="JTA">
 		<jta-data-source>java:/MySqlDS</jta-data-source>
-		<class>hu.gaborbalazs.practice.entity.Book</class>
 		<properties>
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />

@@ -34,8 +34,6 @@ public class ChildEJB {
 	public ChildParent saveChildParent(ChildParent cp) {
 		logger.info(">> saveChildParent(): " + cp);
 		em.persist(cp);
-		cp = em.merge(cp);
-		em.flush();
 		logger.info("<< saveChildParent()" + cp);
 		return cp;
 	}
