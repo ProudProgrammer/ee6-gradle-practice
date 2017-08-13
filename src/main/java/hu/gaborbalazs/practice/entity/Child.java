@@ -23,7 +23,7 @@ public class Child {
 	private String name;
 
 	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(joinColumns = @JoinColumn(name = "child_id"), inverseJoinColumns = @JoinColumn(name = "parent_id"))
+	@JoinTable(name = "child_parent", joinColumns = @JoinColumn(name = "child_id"), inverseJoinColumns = @JoinColumn(name = "parent_id"))
 	private List<Parent> parents;
 
 	public int getId() {

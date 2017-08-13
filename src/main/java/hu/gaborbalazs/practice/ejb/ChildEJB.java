@@ -31,6 +31,14 @@ public class ChildEJB {
 		return children;
 	}
 	
+	public Child find(int id) {
+		logger.info(">> find(): " + id);
+		Child child = childRepository.findBy(id);
+		child.getParents().size();
+		logger.info("<< find(): " + id);
+		return child;
+	}
+	
 	public ChildParent saveChildParent(ChildParent cp) {
 		logger.info(">> saveChildParent(): " + cp);
 		em.persist(cp);
