@@ -6,9 +6,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 
-import org.jboss.logging.Logger;
+import org.slf4j.Logger;
 
-import hu.gaborbalazs.practice.ejb.ChildEJB;
+import hu.gaborbalazs.practice.ejb.ChildEjb;
 import hu.gaborbalazs.practice.entity.Child;
 import hu.gaborbalazs.practice.entity.ChildParent;
 
@@ -20,7 +20,7 @@ public class ChildController {
 	private Logger logger;
 
 	@Inject
-	private ChildEJB childEJB;
+	private ChildEjb childEJB;
 
 	public void init() {
 		logger.info(">> init()");

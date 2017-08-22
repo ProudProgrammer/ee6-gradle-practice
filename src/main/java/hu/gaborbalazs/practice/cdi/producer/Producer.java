@@ -5,7 +5,8 @@ import javax.enterprise.inject.spi.InjectionPoint;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.jboss.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Producer {
 
@@ -19,6 +20,6 @@ public class Producer {
 
 	@Produces
 	private Logger createLogger(InjectionPoint injectionPoint) {
-		return Logger.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
+		return LoggerFactory.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
 	}
 }

@@ -14,9 +14,9 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import org.jboss.logging.Logger;
+import org.slf4j.Logger;
 
-import hu.gaborbalazs.practice.ejb.ToyEJB;
+import hu.gaborbalazs.practice.ejb.ToyEjb;
 import hu.gaborbalazs.practice.entity.Child;
 import hu.gaborbalazs.practice.entity.Toy;
 import hu.gaborbalazs.practice.repository.ChildRepository;
@@ -30,7 +30,7 @@ public class ToyController {
 	private Logger logger;
 
 	@Inject
-	private ToyEJB toyEJB;
+	private ToyEjb toyEJB;
 
 	@Inject
 	private ChildRepository childRepository;

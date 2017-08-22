@@ -8,10 +8,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
 
-import org.jboss.logging.Logger;
+import org.slf4j.Logger;
 
 import hu.gaborbalazs.practice.cdi.bean.CDITestBean;
-import hu.gaborbalazs.practice.ejb.BookEJB;
+import hu.gaborbalazs.practice.ejb.BookEjb;
 import hu.gaborbalazs.practice.entity.Book;
 
 @ManagedBean(name = "bookController")
@@ -47,7 +47,7 @@ public class BookController {
 	private CDITestBean cdiTestBean;
 
 	@EJB
-	private BookEJB bookEJB;
+	private BookEjb bookEJB;
 
 	private PriceChanger priceChanger = new PriceChanger();
 	private Book book = new Book();

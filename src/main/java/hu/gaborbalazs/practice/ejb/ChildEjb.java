@@ -6,14 +6,14 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
-import org.jboss.logging.Logger;
+import org.slf4j.Logger;
 
 import hu.gaborbalazs.practice.entity.Child;
 import hu.gaborbalazs.practice.entity.ChildParent;
 import hu.gaborbalazs.practice.repository.ChildRepository;
 
 @Stateless
-public class ChildEJB {
+public class ChildEjb {
 
 	@Inject
 	private Logger logger;

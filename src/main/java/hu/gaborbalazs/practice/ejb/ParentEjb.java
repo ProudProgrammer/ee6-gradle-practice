@@ -4,12 +4,12 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
-import org.jboss.logging.Logger;
+import org.slf4j.Logger;
 
 import hu.gaborbalazs.practice.entity.ParentAux;
 
 @Stateless
-public class ParentEJB {
+public class ParentEjb {
 
 	@Inject
 	private Logger logger;

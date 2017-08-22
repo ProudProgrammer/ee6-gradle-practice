@@ -6,9 +6,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 
-import org.jboss.logging.Logger;
+import org.slf4j.Logger;
 
-import hu.gaborbalazs.practice.ejb.ParentEJB;
+import hu.gaborbalazs.practice.ejb.ParentEjb;
 import hu.gaborbalazs.practice.entity.Parent;
 import hu.gaborbalazs.practice.entity.ParentAux;
 import hu.gaborbalazs.practice.repository.ParentRepository;
@@ -21,7 +21,7 @@ public class ParentController {
 	private Logger logger;
 
 	@Inject
-	private ParentEJB parentEJB;
+	private ParentEjb parentEJB;
 
 	@Inject
 	private ParentRepository parentRepository;

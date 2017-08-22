@@ -8,13 +8,13 @@ import javax.ejb.Asynchronous;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-import org.jboss.logging.Logger;
+import org.slf4j.Logger;
 
 import hu.gaborbalazs.practice.entity.Child;
 import hu.gaborbalazs.practice.repository.ChildRepository;
 
 @Stateless
-public class ToyEJB {
+public class ToyEjb {
 
 	@Inject
 	private Logger logger;

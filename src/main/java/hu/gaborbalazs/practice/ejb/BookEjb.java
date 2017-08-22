@@ -10,7 +10,7 @@ import javax.persistence.TypedQuery;
 import hu.gaborbalazs.practice.entity.Book;
 
 @Stateless
-public class BookEJB {
+public class BookEjb {
 
     @PersistenceContext(unitName = "gbPU")
     private EntityManager em;
