@@ -10,36 +10,55 @@ import javax.ws.rs.core.MediaType;
 import org.slf4j.Logger;
 
 import hu.gaborbalazs.practice.ejb.ServiceEjb;
+import hu.gaborbalazs.practice.rest.response.PersonResponse;
 
 @Path("resttest")
 public class RestTest {
 
-	@Inject
-	private Logger logger;
+    @Inject
+    private Logger logger;
 
-	@Inject
-	private ServiceEjb serviceEjb;
+    @Inject
+    private ServiceEjb serviceEjb;
 
-	@PostConstruct
-	private void init() {
-		logger.trace(">> init()");
-	}
+    @PostConstruct
+    private void init() {
+        logger.trace(">> init()");
+    }
 
-	@GET
-	@Path("echo")
-	@Produces(MediaType.TEXT_PLAIN)
-	public String echo() {
-		logger.trace(">> echo()");
+    @GET
+    @Path("echo")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String echo() {
+        logger.trace(">> echo()");
 
-		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append("Hello World!");
-		stringBuilder.append("\n");
-		stringBuilder.append("Did you know that 4 + 5 = ");
-		stringBuilder.append(serviceEjb.add(4, 5));
-		stringBuilder.append("?");
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Hello World!");
+        stringBuilder.append("\n");
+        stringBuilder.append("Did you know that 4 + 5 = ");
+        stringBuilder.append(serviceEjb.add(4, 5));
+        stringBuilder.append("?");
 
-		logger.trace("<< echo()");
+        logger.trace("<< echo()");
 
-		return stringBuilder.toString();
-	}
+        return stringBuilder.toString();
+    }
+
+    @GET
+    @Path("exception")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String exceptionTest() {
+        logger.trace(">> exceptionTest");
+        throw new IllegalStateException("Exception Test");
+    }
+    
+    @GET
+    @Path("person")
+    @Produces(MediaType.APPLICATION_JSON)
+    public PersonResponse getPerson() {
+        PersonResponse personResponse = new PersonResponse();
+        personResponse.setName("Bob");
+        personResponse.setAge(35);
+        return personResponse;
+    }
 }
