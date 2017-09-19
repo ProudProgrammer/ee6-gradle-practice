@@ -27,8 +27,14 @@
 			<a href="/ee6-gradle-practice/rest/resttest/echo">RestTest > echo</a>
 		</p>
 		<h:form>
-			<h:commandButton value="Test Async Ejbs"
-				actionListener="#{buttonController.asyncEjbButtonListener()}" />
+			<p>
+				<h:commandButton value="Test Async Ejbs"
+					actionListener="#{buttonController.asyncEjbButtonListener()}" />
+			</p>
+			<p>
+				<h:commandButton value="Test XA"
+					actionListener="#{buttonController.xaTestListener()}" />
+			</p>
 		</h:form>
 	</div>
 </body>
