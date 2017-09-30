@@ -12,7 +12,7 @@ public class SchedulerEjb {
     @Inject
     private Logger logger;
 
-    @Schedule(second = "*/10", minute = "*", hour = "*")
+    @Schedule(second = "*/10", minute = "*", hour = "*", persistent = false)
     public void logScheduler() {
         logger.trace("I am alive");
     }

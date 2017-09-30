@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.slf4j.Logger;
 
+import hu.gaborbalazs.practice.cdi.bean.CDITestBean;
 import hu.gaborbalazs.practice.ejb.AsyncEjb1;
 
 @ManagedBean
@@ -17,6 +18,9 @@ public class ButtonController {
 
 	@Inject
 	private AsyncEjb1 asyncEjb1;
+	
+	@Inject
+	private CDITestBean cdiTestBean;
 
 	public void asyncEjbButtonListener() {
 		logger.trace(">> asyncEjbButtonListener()");
@@ -26,5 +30,13 @@ public class ButtonController {
 			logger.error("AsyncMethod1() failed", e);
 		}
 		logger.trace("<< asyncEjbButtonListener()");
+	}
+	
+	public void testCdiButtonListener() {
+		logger.trace(">> testCdiButtonListener()");
+		
+		logger.trace("cdiTestBean: " + cdiTestBean.toString());
+		
+		logger.trace("<< testCdiButtonListener()");
 	}
 }

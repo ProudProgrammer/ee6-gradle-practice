@@ -9,6 +9,7 @@ import javax.ws.rs.core.MediaType;
 
 import org.slf4j.Logger;
 
+import hu.gaborbalazs.practice.cdi.bean.CDITestBean;
 import hu.gaborbalazs.practice.ejb.ServiceEjb;
 import hu.gaborbalazs.practice.rest.response.PersonResponse;
 
@@ -20,6 +21,9 @@ public class RestTest {
 
     @Inject
     private ServiceEjb serviceEjb;
+    
+    @Inject
+    private CDITestBean cdiTestBean;
 
     @PostConstruct
     private void init() {
@@ -42,6 +46,16 @@ public class RestTest {
         logger.trace("<< echo()");
 
         return stringBuilder.toString();
+    }
+    
+    @GET
+    @Path("cdi")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String cdi() {
+        logger.trace(">> cdi()");
+        logger.trace("cdiTestBean: " + cdiTestBean.toString());
+        logger.trace("<< cdi()");
+        return cdiTestBean.toString();
     }
 
     @GET
