@@ -19,7 +19,7 @@ public class XATestEjb {
 	@Inject
 	private EntityManager entityManager;
 	
-	@PersistenceContext(unitName = "gbPU2")
+//	@PersistenceContext(unitName = "gbPU2")
 	private EntityManager entityManager2;
 	
 	public void createInGbPU(XATest xaTest) {
