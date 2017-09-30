@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import com.google.common.base.MoreObjects;
 
 @Entity
-@Table(name = "parent")
+@Table(name = "Parent")
 public class ParentAux {
 
 	@Id
