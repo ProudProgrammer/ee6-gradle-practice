@@ -68,4 +68,12 @@ public class ButtonController {
 		
 		logger.trace("<< testCdiButtonListener()");
 	}
+	
+	public void testJmsButtonListener() {
+		logger.trace(">> testJmsButtonListener()");
+		
+		
+		
+		logger.trace("<< testJmsButtonListener()");
+	}
 }
