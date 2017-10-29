@@ -1,4 +1,4 @@
-package hu.gaborbalazs.practice.cdi.bean;
+package hu.gaborbalazs.practice.cdi.impl;
 
 import java.text.MessageFormat;
 

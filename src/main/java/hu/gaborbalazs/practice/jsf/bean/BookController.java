@@ -10,7 +10,7 @@ import javax.inject.Inject;
 
 import org.slf4j.Logger;
 
-import hu.gaborbalazs.practice.cdi.bean.CDITestBean;
+import hu.gaborbalazs.practice.cdi.impl.CDITestBean;
 import hu.gaborbalazs.practice.ejb.BookEjb;
 import hu.gaborbalazs.practice.entity.Book;
 

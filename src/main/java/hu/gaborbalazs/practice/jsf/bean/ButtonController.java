@@ -8,7 +8,7 @@ import javax.inject.Inject;
 
 import org.slf4j.Logger;
 
-import hu.gaborbalazs.practice.cdi.bean.CDITestBean;
+import hu.gaborbalazs.practice.cdi.impl.CDITestBean;
 import hu.gaborbalazs.practice.ejb.AsyncEjb1;
 import hu.gaborbalazs.practice.ejb.XATestEjb;
 import hu.gaborbalazs.practice.entity.XATest;
