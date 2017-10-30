@@ -29,25 +29,26 @@
 		<p>
 			<h:form>
 				<h:commandButton value="Test Async Ejbs"
-					actionListener="#{buttonController.asyncEjbButtonListener()}" />
+					actionListener="#{indexController.asyncEjbButtonListener()}" />
 			</h:form>
 		</p>
 		<p>
 			<h:form>
 				<h:commandButton value="Test XA"
-					actionListener="#{buttonController.xaTestListener()}" />
+					actionListener="#{indexController.xaTestListener()}" />
 			</h:form>
 		</p>
 		<p>
 			<h:form>
 				<h:commandButton value="Test CDI"
-					actionListener="#{buttonController.testCdiButtonListener()}" />
+					actionListener="#{indexController.testCdiButtonListener()}" />
 			</h:form>
 		</p>
 		<p>
 			<h:form>
-				<h:commandButton value="Test JMS"
-					actionListener="#{buttonController.testJmsButtonListener()}" />
+				<h:inputText value="#{indexController.cdiEventText}"  />
+				<h:commandButton value="Test CDI Event"
+					actionListener="#{indexController.testCdiEventButtonListener()}" />
 			</h:form>
 		</p>
 	</div>

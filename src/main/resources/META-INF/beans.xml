@@ -7,5 +7,10 @@
 	<decorators>
 		<class>hu.gaborbalazs.practice.cdi.decorator.HelloMessageDecorator</class>
 	</decorators>
+	
+	<alternatives>
+<!-- 		<class>hu.gaborbalazs.practice.cdi.alternative.DangerMessage</class> -->
+		<class>hu.gaborbalazs.practice.cdi.alternative.DrunkMessage</class>
+	</alternatives>
 
 </beans>

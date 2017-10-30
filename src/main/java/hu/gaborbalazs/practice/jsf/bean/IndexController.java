@@ -2,6 +2,7 @@ package hu.gaborbalazs.practice.jsf.bean;
 
 import java.util.UUID;
 
+import javax.enterprise.event.Event;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
@@ -16,7 +17,7 @@ import hu.gaborbalazs.practice.exception.BaseCheckedException;
 
 @ManagedBean
 @RequestScoped
-public class ButtonController {
+public class IndexController {
 
 	@Inject
 	private Logger logger;
@@ -29,7 +30,12 @@ public class ButtonController {
 	
 	@Inject
 	private CDITestBean cdiTestBean;
-
+	
+	@Inject
+	private Event<String> textEvents;
+	
+	private String cdiEventText;
+	
 	public void asyncEjbButtonListener() {
 		logger.trace(">> asyncEjbButtonListener()");
 		try {
@@ -69,11 +75,20 @@ public class ButtonController {
 		logger.trace("<< testCdiButtonListener()");
 	}
 	
-	public void testJmsButtonListener() {
-		logger.trace(">> testJmsButtonListener()");
+	public void testCdiEventButtonListener() {
+		logger.trace(">> testCdiEventButtonListener()");
 		
+		logger.trace("cdiEventText: " + cdiEventText);
+		textEvents.fire(cdiEventText);
 		
-		
-		logger.trace("<< testJmsButtonListener()");
+		logger.trace("<< testCdiEventButtonListener()");
+	}
+
+	public String getCdiEventText() {
+		return cdiEventText;
+	}
+
+	public void setCdiEventText(String cdiEventText) {
+		this.cdiEventText = cdiEventText;
 	}
 }
