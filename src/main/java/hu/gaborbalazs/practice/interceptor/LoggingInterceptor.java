@@ -20,11 +20,17 @@ public class LoggingInterceptor {
 				.subSequence(0, ic.getTarget().getClass().getName().indexOf("$")).toString()
 				: ic.getTarget().getClass().getName();
 		Logger logger = LoggerFactory.getLogger(className);
-		logger.trace(ENTER + ic.getMethod().getName());
+		StringBuilder builder = new StringBuilder(ENTER);
+		builder.append(ic.getMethod().getName());
+		builder.append("()");
+		logger.trace(builder.toString());
 		try {
 			return ic.proceed();
 		} finally {
-			logger.trace(EXIT + ic.getMethod().getName());
+			builder = new StringBuilder(EXIT);
+			builder.append(ic.getMethod().getName());
+			builder.append("()");
+			logger.trace(builder.toString());
 		}
 	}
 }

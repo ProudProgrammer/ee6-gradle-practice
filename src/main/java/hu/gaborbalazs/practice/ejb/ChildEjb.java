@@ -6,43 +6,34 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
-import org.slf4j.Logger;
-
 import hu.gaborbalazs.practice.entity.Child;
 import hu.gaborbalazs.practice.entity.ChildParent;
+import hu.gaborbalazs.practice.interceptor.Loggable;
 import hu.gaborbalazs.practice.repository.ChildRepository;
 
+@Loggable
 @Stateless
 public class ChildEjb {
 
 	@Inject
-	private Logger logger;
-	
-	@Inject
 	private ChildRepository childRepository;
-	
+
 	@Inject
 	private EntityManager em;
-	
+
 	public List<Child> getAllChild() {
-		logger.info(">> getAllChild()");
 		List<Child> children = childRepository.findAll();
-		logger.info("<< getAllChild(): " + children);
 		return children;
 	}
-	
+
 	public Child find(int id) {
-		logger.info(">> find(): " + id);
 		Child child = childRepository.findBy(id);
 		child.getParents().size();
-		logger.info("<< find(): " + id);
 		return child;
 	}
-	
+
 	public ChildParent saveChildParent(ChildParent cp) {
-		logger.info(">> saveChildParent(): " + cp);
 		em.persist(cp);
-		logger.info("<< saveChildParent()" + cp);
 		return cp;
 	}
 }

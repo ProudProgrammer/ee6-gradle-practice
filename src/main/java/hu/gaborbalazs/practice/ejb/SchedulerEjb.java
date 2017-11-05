@@ -12,8 +12,8 @@ public class SchedulerEjb {
     @Inject
     private Logger logger;
 
-    @Schedule(second = "*/10", minute = "*", hour = "*", persistent = false)
+    @Schedule(second = "*/20", minute = "*", hour = "*", persistent = false)
     public void logScheduler() {
-        logger.trace("I am alive");
+        logger.info("I am alive");
     }
 }

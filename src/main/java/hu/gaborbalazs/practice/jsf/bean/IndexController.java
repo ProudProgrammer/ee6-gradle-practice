@@ -2,10 +2,10 @@ package hu.gaborbalazs.practice.jsf.bean;
 
 import java.util.UUID;
 
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.event.Event;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import org.slf4j.Logger;
 
@@ -14,8 +14,10 @@ import hu.gaborbalazs.practice.ejb.AsyncEjb1;
 import hu.gaborbalazs.practice.ejb.XATestEjb;
 import hu.gaborbalazs.practice.entity.XATest;
 import hu.gaborbalazs.practice.exception.BaseCheckedException;
+import hu.gaborbalazs.practice.interceptor.Loggable;
 
-@ManagedBean
+@Loggable
+@Named
 @RequestScoped
 public class IndexController {
 

@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -19,11 +19,13 @@ import org.slf4j.Logger;
 import hu.gaborbalazs.practice.ejb.ToyEjb;
 import hu.gaborbalazs.practice.entity.Child;
 import hu.gaborbalazs.practice.entity.Toy;
+import hu.gaborbalazs.practice.interceptor.Loggable;
 import hu.gaborbalazs.practice.repository.ChildRepository;
 import hu.gaborbalazs.practice.repository.ToyRepository;
 
-@ManagedBean
-@ViewScoped
+@Loggable
+@Named
+@RequestScoped
 public class ToyController {
 
 	@Inject
@@ -42,8 +44,6 @@ public class ToyController {
 	private EntityManager em;
 
 	public void init() {
-		logger.info(">> init()");
-
 		Child child1 = null;
 		try {
 			child1 = childRepository.findByIdFetchParentByName(1, "Susan");
@@ -59,7 +59,7 @@ public class ToyController {
 			logger.info("No child found");
 		}
 		logger.info("Child2: " + child2);
-		
+
 		Child child3 = null;
 		try {
 			child3 = childRepository.findByIdFetchParent(3);
@@ -67,18 +67,14 @@ public class ToyController {
 			logger.info("No child found");
 		}
 		logger.info("Child3: " + child3);
-
-		logger.info("<< init()");
 	}
 
 	public String criteriaTest() {
-		logger.info(">> criteriaTest()");
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<Toy> c = cb.createQuery(Toy.class);
 		Root<Toy> toy = c.from(Toy.class);
 		c.select(toy).where(cb.equal(toy.get("id"), "1"));
 		List<Toy> toys = em.createQuery(c).getResultList();
-		logger.info("<< criteriaTest()");
 		if (toys.isEmpty()) {
 			return "No result found";
 		}
@@ -86,14 +82,11 @@ public class ToyController {
 	}
 
 	public List<Toy> getToyNames() {
-		logger.info(">> getToyNames()");
 		List<Toy> toys = toyRepository.findAllNameColumn();
-		logger.info("<< getToyNames(): " + toys);
 		return toys;
 	}
 
 	public void asyncTest() throws InterruptedException {
-		logger.info(">> asyncTest()");
 		List<Future<Integer>> requestList = new ArrayList<>();
 		List<Integer> resultList = new ArrayList<>();
 		int requests = 3;
@@ -108,6 +101,5 @@ public class ToyController {
 			}
 		}
 		logger.info("ResultList size: " + resultList.size() + ", ResultList: " + resultList);
-		logger.info("<< asyncTest()");
 	}
 }

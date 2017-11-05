@@ -3,18 +3,16 @@ package hu.gaborbalazs.practice.jsf.bean;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.ejb.EJB;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 
-import org.slf4j.Logger;
-
-import hu.gaborbalazs.practice.cdi.impl.CDITestBean;
 import hu.gaborbalazs.practice.ejb.BookEjb;
 import hu.gaborbalazs.practice.entity.Book;
+import hu.gaborbalazs.practice.interceptor.Loggable;
 
-@ManagedBean(name = "bookController")
+@Loggable
+@Named
 @RequestScoped
 public class BookController {
 
@@ -41,12 +39,6 @@ public class BookController {
 	}
 
 	@Inject
-	private Logger logger;
-
-	@Inject
-	private CDITestBean cdiTestBean;
-
-	@EJB
 	private BookEjb bookEJB;
 
 	private PriceChanger priceChanger = new PriceChanger();
@@ -57,19 +49,15 @@ public class BookController {
 	}
 
 	public String doCreateBook() {
-		logger.debug(">> doCreateBook()");
 		book = bookEJB.createBook(book);
 		bookList = bookEJB.findBooks();
-		logger.debug("<< doCreateBook()");
 		return "listBooks.xhtml";
 	}
 
 	public String updateBook() {
-		logger.debug(">> updateBook()");
 		Book book = bookEJB.findById(priceChanger.getId());
 		book.setPrice(book.getPrice() + priceChanger.getPrice());
 		bookEJB.save(book);
-		logger.debug("<< updateBook()");
 		return "listBooks.xhtml";
 	}
 
@@ -82,9 +70,7 @@ public class BookController {
 	}
 
 	public List<Book> getBookList() {
-		logger.info(">> getBookList()");
 		bookList = bookEJB.findBooks();
-		logger.info("<< getBookList()");
 		return bookList;
 	}
 

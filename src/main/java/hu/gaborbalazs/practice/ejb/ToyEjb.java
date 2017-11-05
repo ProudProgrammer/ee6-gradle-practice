@@ -11,8 +11,10 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 
 import hu.gaborbalazs.practice.entity.Child;
+import hu.gaborbalazs.practice.interceptor.Loggable;
 import hu.gaborbalazs.practice.repository.ChildRepository;
 
+@Loggable
 @Stateless
 public class ToyEjb {
 
@@ -23,10 +25,8 @@ public class ToyEjb {
 	private ChildRepository childRepository;
 
 	public Child findBy(int id) {
-		logger.info(">> findBy");
 		Child child = childRepository.findBy(id);
 		logger.info("Child: " + child);
-		logger.info("<< findBy");
 		return child;
 	}
 

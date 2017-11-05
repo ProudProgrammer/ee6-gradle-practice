@@ -2,23 +2,20 @@ package hu.gaborbalazs.practice.jsf.bean;
 
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-
-import org.slf4j.Logger;
+import javax.inject.Named;
 
 import hu.gaborbalazs.practice.ejb.ParentEjb;
 import hu.gaborbalazs.practice.entity.Parent;
 import hu.gaborbalazs.practice.entity.ParentAux;
+import hu.gaborbalazs.practice.interceptor.Loggable;
 import hu.gaborbalazs.practice.repository.ParentRepository;
 
-@ManagedBean
-@ViewScoped
+@Loggable
+@Named
+@RequestScoped
 public class ParentController {
-
-	@Inject
-	private Logger logger;
 
 	@Inject
 	private ParentEjb parentEJB;
@@ -27,17 +24,13 @@ public class ParentController {
 	private ParentRepository parentRepository;
 
 	public void init() {
-		logger.info(">> init()");
-		logger.info("<< init()");
 	}
 
 	public List<Parent> mapTwoEntityForTheSameTeble() {
-		logger.info(">> mapTwoEntityForTheSameTeble()");
 		List<Parent> parents = parentRepository.findAll();
 		ParentAux parentAux = new ParentAux();
 		parentAux.setName("ParentAux");
 		parentEJB.save(parentAux);
-		logger.info("<< mapTwoEntityForTheSameTeble()");
 		return parents;
 	}
 
