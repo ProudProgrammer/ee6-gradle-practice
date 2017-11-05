@@ -6,19 +6,20 @@ import javax.inject.Inject;
 
 import org.slf4j.Logger;
 
+import hu.gaborbalazs.practice.interceptor.Loggable;
+
 @Stateless
 @Asynchronous
+@Loggable
 public class AsyncEjb2 {
 
 	@Inject
 	private Logger logger;
-	
+
 	public void asyncMethod() throws InterruptedException {
-		logger.trace(">> asyncMethod");
 		for (int i = 0; i < 3; i++) {
-			logger.trace("Waiting...");
+			logger.info("Waiting...");
 			Thread.sleep(2000);
 		}
-		logger.trace("<< asyncMethod");
 	}
 }

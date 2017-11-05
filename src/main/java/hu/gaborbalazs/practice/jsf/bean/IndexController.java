@@ -24,30 +24,27 @@ public class IndexController {
 
 	@Inject
 	private AsyncEjb1 asyncEjb1;
-	
+
 	@Inject
 	private XATestEjb xaTestEjb;
-	
+
 	@Inject
 	private CDITestBean cdiTestBean;
-	
+
 	@Inject
 	private Event<String> textEvents;
-	
+
 	private String cdiEventText;
-	
+
 	public void asyncEjbButtonListener() {
-		logger.trace(">> asyncEjbButtonListener()");
 		try {
 			asyncEjb1.asyncMethod();
 		} catch (InterruptedException e) {
 			logger.error("AsyncMethod1() failed", e);
 		}
-		logger.trace("<< asyncEjbButtonListener()");
 	}
-	
+
 	public void xaTestListener() {
-		logger.trace(">> XATestButtonListener()");
 		XATest xaTest = new XATest();
 		xaTest.setText(UUID.randomUUID().toString());
 		xaTestEjb.createInGbPU(xaTest);
@@ -62,26 +59,16 @@ public class IndexController {
 			xaTestEjb.createInGbPUAndGbPU2(xaTest3, xaTest4);
 		} catch (BaseCheckedException e) {
 			logger.error(e.getMessage(), e);
-		} finally {
-			logger.trace("<< XATestButtonListener()");
 		}
 	}
-	
+
 	public void testCdiButtonListener() {
-		logger.trace(">> testCdiButtonListener()");
-		
-		logger.trace("cdiTestBean: " + cdiTestBean.toString());
-		
-		logger.trace("<< testCdiButtonListener()");
+		logger.info("cdiTestBean: " + cdiTestBean.toString());
 	}
-	
+
 	public void testCdiEventButtonListener() {
-		logger.trace(">> testCdiEventButtonListener()");
-		
-		logger.trace("cdiEventText: " + cdiEventText);
+		logger.info("cdiEventText: " + cdiEventText);
 		textEvents.fire(cdiEventText);
-		
-		logger.trace("<< testCdiEventButtonListener()");
 	}
 
 	public String getCdiEventText() {
@@ -91,4 +78,5 @@ public class IndexController {
 	public void setCdiEventText(String cdiEventText) {
 		this.cdiEventText = cdiEventText;
 	}
+
 }

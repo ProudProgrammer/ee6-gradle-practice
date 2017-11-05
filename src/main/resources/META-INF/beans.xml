@@ -12,5 +12,9 @@
 <!-- 		<class>hu.gaborbalazs.practice.cdi.alternative.DangerMessage</class> -->
 		<class>hu.gaborbalazs.practice.cdi.alternative.DrunkMessage</class>
 	</alternatives>
+	
+	<interceptors>
+		<class>hu.gaborbalazs.practice.interceptor.LoggingInterceptor</class>
+	</interceptors>
 
 </beans>

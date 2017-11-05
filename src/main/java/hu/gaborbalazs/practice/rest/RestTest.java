@@ -11,10 +11,13 @@ import javax.ws.rs.core.Response;
 import org.slf4j.Logger;
 
 import hu.gaborbalazs.practice.cdi.iface.Message;
+import hu.gaborbalazs.practice.cdi.impl.CDITestBean;
 import hu.gaborbalazs.practice.ejb.ServiceEjb;
+import hu.gaborbalazs.practice.interceptor.Loggable;
 import hu.gaborbalazs.practice.rest.response.PersonResponse;
 
 @Path("resttest")
+@Loggable
 public class RestTest {
 
 	@Inject
@@ -26,26 +29,23 @@ public class RestTest {
 	@Inject
 	private Message message;
 
+	@Inject
+	private CDITestBean cdiTestBean;
+
 	@PostConstruct
 	private void init() {
-		logger.trace(">> init()");
 	}
 
 	@GET
 	@Path("echo")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String echo() {
-		logger.trace(">> echo()");
-
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append("Hello World!");
 		stringBuilder.append("\n");
 		stringBuilder.append("Did you know that 4 + 5 = ");
 		stringBuilder.append(serviceEjb.add(4, 5));
 		stringBuilder.append("?");
-
-		logger.trace("<< echo()");
-
 		return stringBuilder.toString();
 	}
 
@@ -53,9 +53,8 @@ public class RestTest {
 	@Path("cdi")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response cdi() {
-		logger.trace(">> cdi()");
-		logger.trace("Message: " + message.getMessage());
-		logger.trace("<< cdi()");
+		logger.info("Message: " + message.getMessage());
+		logger.info("cdiTestBean: " + cdiTestBean.toString());
 		return Response.ok(message.getMessage()).build();
 	}
 
@@ -63,7 +62,6 @@ public class RestTest {
 	@Path("exception")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String exceptionTest() {
-		logger.trace(">> exceptionTest");
 		throw new IllegalStateException("Exception Test");
 	}
 
