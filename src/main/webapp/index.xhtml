@@ -9,59 +9,41 @@
 <ui:debug hotkey="x" />
 <h:body>
 	<h1>EE6 Gradle Practice</h1>
-	<span style="font-style: italic;">Press Ctrl+Shift+X to see JSF
-		Debug Window</span>
-	<div>
-		<p>
-			<a href="listBooks.xhtml">List Books</a>
-		</p>
-		<p>
-			<a href="newBook.xhtml">Create New Book</a>
-		</p>
-		<p>
-			<a href="toy.xhtml">Toys</a>
-		</p>
-		<p>
-			<a href="parent.xhtml">Parents</a>
-		</p>
-		<p>
-			<a href="child.xhtml">Children</a>
-		</p>
-		<p>
-			<a href="/ee6-gradle-practice/rest/resttest/echo">RestTest > echo</a>
-		</p>
-		<p>
-			<h:form>
-
-				<h:commandButton value="Test Async Ejbs"
-					actionListener="#{indexController.asyncEjbButtonListener()}" />
-			</h:form>
-		</p>
-		<p>
-			<h:form>
-				<h:commandButton value="Test XA"
-					actionListener="#{indexController.xaTestListener()}" />
-			</h:form>
-		</p>
-		<p>
-			<h:form>
-				<h:commandButton value="Test CDI"
-					actionListener="#{indexController.testCdiButtonListener()}" />
-			</h:form>
-		</p>
-		<p>
-			<h:form>
-				<h:inputText value="#{indexController.cdiEventText}" />
+	<h:outputText value="Press Ctrl+Shift+X to see JSF
+			Debug Window"
+		style="font-style: italic; display: block; margin-bottom: 20px;" />
+	<h:form>
+		<h:panelGrid>
+			<h:link outcome="listBooks.xhtml" value="List Books" />
+			<h:link outcome="newBook.xhtml" value="Create New Book" />
+			<h:link outcome="toy.xhtml" value="Toys" />
+			<h:link outcome="parent.xhtml" value="Parents" />
+			<h:link outcome="child.xhtml" value="Children" />
+			<h:outputLink value="/ee6-gradle-practice/rest/resttest/echo">RestTest > echo</h:outputLink>
+			<h:commandButton value="Test Async Ejbs"
+				title="Tests Ejbs called asynchronously"
+				actionListener="#{indexController.asyncEjbButtonListener}" />
+			<h:commandButton value="Test XA" title="Tests Extended Architecture"
+				actionListener="#{indexController.xaTestListener}" />
+			<h:commandButton value="Test CDI"
+				title="Tests Context and Dependency Injection"
+				actionListener="#{indexController.testCdiButtonListener}" />
+			<h:commandButton value="Transaction Test"
+				title="Tests transaction boundaries"
+				actionListener="#{indexController.transactionTest}" />
+		</h:panelGrid>
+	</h:form>
+	<h:form>
+		<h:panelGrid>
+			<h:panelGroup>
+				<h:inputText id="cdiEventInputText" requiredMessage="Required"
+					required="true" value="#{indexController.cdiEventText}" />
 				<h:commandButton value="Test CDI Event"
-					actionListener="#{indexController.testCdiEventButtonListener()}" />
-			</h:form>
-		</p>
-		<p>
-			<h:form>
-				<h:commandButton value="Transaction Test"
-					actionListener="#{indexController.transactionTest()}" />
-			</h:form>
-		</p>
-	</div>
+					title="Tests JavaEE's Observer/Obvervable pattern"
+					actionListener="#{indexController.testCdiEventButtonListener}" />
+				<h:message for="cdiEventInputText" style="color: red;" />
+			</h:panelGroup>
+		</h:panelGrid>
+	</h:form>
 </h:body>
 </html>
