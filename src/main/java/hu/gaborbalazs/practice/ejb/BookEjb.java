@@ -37,4 +37,16 @@ public class BookEjb {
 		em.persist(book);
 		return book;
 	}
+
+	// @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+	public void transactionTest() {
+		Book book = new Book();
+		book.setTitle("Test Book");
+		book.setDescription("This is a test book");
+		book.setIllustrations(false);
+		book.setIsbn("isbn-001-0002");
+		book.setPrice(5100f);
+		book.setNbOfPage(350);
+		em.persist(book);
+	}
 }

@@ -1,12 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html">
-<head>
-<title>EE6 Gradle Practice</title>
-</head>
-<body>
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>EE6 Gradle Practice</title>
+</h:head>
+<ui:debug hotkey="x" />
+<h:body>
 	<h1>EE6 Gradle Practice</h1>
+	<span style="font-style: italic;">Press Ctrl+Shift+X to see JSF
+		Debug Window</span>
 	<div>
 		<p>
 			<a href="listBooks.xhtml">List Books</a>
@@ -28,6 +32,7 @@
 		</p>
 		<p>
 			<h:form>
+
 				<h:commandButton value="Test Async Ejbs"
 					actionListener="#{indexController.asyncEjbButtonListener()}" />
 			</h:form>
@@ -46,11 +51,17 @@
 		</p>
 		<p>
 			<h:form>
-				<h:inputText value="#{indexController.cdiEventText}"  />
+				<h:inputText value="#{indexController.cdiEventText}" />
 				<h:commandButton value="Test CDI Event"
 					actionListener="#{indexController.testCdiEventButtonListener()}" />
 			</h:form>
 		</p>
+		<p>
+			<h:form>
+				<h:commandButton value="Transaction Test"
+					actionListener="#{indexController.transactionTest()}" />
+			</h:form>
+		</p>
 	</div>
-</body>
+</h:body>
 </html>

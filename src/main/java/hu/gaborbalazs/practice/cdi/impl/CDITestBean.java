@@ -2,13 +2,24 @@ package hu.gaborbalazs.practice.cdi.impl;
 
 import java.text.MessageFormat;
 
+import javax.inject.Inject;
+
+import hu.gaborbalazs.practice.ejb.BookEjb;
 import hu.gaborbalazs.practice.interceptor.Loggable;
 
 @Loggable
 public class CDITestBean {
 
+	@Inject
+	private BookEjb bookEjb;
+	
 	private String name = "CDITestBean";
+	
 	private int number = 10;
+
+	public void transactionTest() {
+		bookEjb.transactionTest();
+	}
 
 	public String getName() {
 		return name;

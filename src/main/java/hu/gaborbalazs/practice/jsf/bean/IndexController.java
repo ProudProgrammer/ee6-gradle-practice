@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 
 import hu.gaborbalazs.practice.cdi.impl.CDITestBean;
 import hu.gaborbalazs.practice.ejb.AsyncEjb1;
+import hu.gaborbalazs.practice.ejb.ToyEjb;
 import hu.gaborbalazs.practice.ejb.XATestEjb;
 import hu.gaborbalazs.practice.entity.XATest;
 import hu.gaborbalazs.practice.exception.BaseCheckedException;
@@ -29,6 +30,9 @@ public class IndexController {
 
 	@Inject
 	private XATestEjb xaTestEjb;
+	
+	@Inject
+	private ToyEjb toyEjb;
 
 	@Inject
 	private CDITestBean cdiTestBean;
@@ -71,6 +75,10 @@ public class IndexController {
 	public void testCdiEventButtonListener() {
 		logger.info("cdiEventText: " + cdiEventText);
 		textEvents.fire(cdiEventText);
+	}
+	
+	public void transactionTest() {
+		toyEjb.transactionTest();
 	}
 
 	public String getCdiEventText() {
