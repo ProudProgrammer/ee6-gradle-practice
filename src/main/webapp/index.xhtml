@@ -19,28 +19,29 @@
 			<h:link outcome="toy.xhtml" value="Toys" />
 			<h:link outcome="parent.xhtml" value="Parents" />
 			<h:link outcome="child.xhtml" value="Children" />
+			<h:link outcome="jsf_test.xhtml" value="JSF Test" />
 			<h:outputLink value="/ee6-gradle-practice/rest/resttest/echo">RestTest > echo</h:outputLink>
 			<h:commandButton value="Test Async Ejbs"
 				title="Tests Ejbs called asynchronously"
-				actionListener="#{indexController.asyncEjbButtonListener}" />
+				actionListener="#{indexBacking.asyncEjbButtonListener}" />
 			<h:commandButton value="Test XA" title="Tests Extended Architecture"
-				actionListener="#{indexController.xaTestListener}" />
+				actionListener="#{indexBacking.xaTestListener}" />
 			<h:commandButton value="Test CDI"
 				title="Tests Context and Dependency Injection"
-				actionListener="#{indexController.testCdiButtonListener}" />
+				actionListener="#{indexBacking.testCdiButtonListener}" />
 			<h:commandButton value="Transaction Test"
 				title="Tests transaction boundaries"
-				actionListener="#{indexController.transactionTest}" />
+				actionListener="#{indexBacking.transactionTest}" />
 		</h:panelGrid>
 	</h:form>
 	<h:form>
 		<h:panelGrid>
 			<h:panelGroup>
 				<h:inputText id="cdiEventInputText" requiredMessage="Required"
-					required="true" value="#{indexController.cdiEventText}" />
+					required="true" value="#{indexBacking.cdiEventText}" />
 				<h:commandButton value="Test CDI Event"
 					title="Tests JavaEE's Observer/Obvervable pattern"
-					actionListener="#{indexController.testCdiEventButtonListener}" />
+					actionListener="#{indexBacking.testCdiEventButtonListener}" />
 				<h:message for="cdiEventInputText" style="color: red;" />
 			</h:panelGroup>
 		</h:panelGrid>

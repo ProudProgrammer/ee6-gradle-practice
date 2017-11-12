@@ -1,4 +1,4 @@
-package hu.gaborbalazs.practice.jsf.bean;
+package hu.gaborbalazs.practice.jsf.backing;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ import hu.gaborbalazs.practice.repository.ToyRepository;
 @Loggable
 @Named
 @RequestScoped
-public class ToyController {
+public class ToyBacking {
 
 	@Inject
 	private Logger logger;

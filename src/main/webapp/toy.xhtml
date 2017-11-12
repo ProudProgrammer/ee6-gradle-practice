@@ -7,12 +7,12 @@
 	<title>Toys</title>
 </h:head>
 <f:metadata>
-	<f:event type="preRenderView" listener="#{toyController.init}" />
+	<f:event type="preRenderView" listener="#{toyBacking.init}" />
 </f:metadata>
 <h:body>
 	<h1>Toys</h1>
-	<p>#{toyController.criteriaTest()}</p>
-	<p>#{toyController.getToyNames()}</p>
-	<p>#{toyController.asyncTest()}</p>
+	<p>#{toyBacking.criteriaTest()}</p>
+	<p>#{toyBacking.getToyNames()}</p>
+	<p>#{toyBacking.asyncTest()}</p>
 </h:body>
 </html>

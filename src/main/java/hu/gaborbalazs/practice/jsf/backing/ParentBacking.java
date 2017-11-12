@@ -1,4 +1,4 @@
-package hu.gaborbalazs.practice.jsf.bean;
+package hu.gaborbalazs.practice.jsf.backing;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ import hu.gaborbalazs.practice.repository.ParentRepository;
 @Loggable
 @Named
 @RequestScoped
-public class ParentController {
+public class ParentBacking {
 
 	@Inject
 	private ParentEjb parentEJB;

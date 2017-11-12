@@ -1,4 +1,4 @@
-package hu.gaborbalazs.practice.jsf.bean;
+package hu.gaborbalazs.practice.jsf.backing;
 
 import java.util.UUID;
 
@@ -20,7 +20,7 @@ import hu.gaborbalazs.practice.interceptor.Loggable;
 @Loggable
 @Named
 @RequestScoped
-public class IndexController {
+public class IndexBacking {
 
 	@Inject
 	private Logger logger;

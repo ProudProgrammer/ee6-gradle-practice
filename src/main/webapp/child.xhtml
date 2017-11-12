@@ -7,10 +7,10 @@
 	<title>Children</title>
 </h:head>
 <f:metadata>
-	<f:event type="preRenderView" listener="#{childController.init}" />
+	<f:event type="preRenderView" listener="#{childBacking.init}" />
 </f:metadata>
 <h:body>
 	<h1>Children</h1>
-	<p>#{childController.getChild(1)}</p>
+	<p>#{childBacking.getChild(1)}</p>
 </h:body>
 </html>

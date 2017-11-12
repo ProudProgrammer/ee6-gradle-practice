@@ -9,7 +9,7 @@
 <h:body>
 	<h1>List of the books</h1>
 	<hr />
-	<h:dataTable value="#{bookController.bookList}" var="bk" border="1">
+	<h:dataTable value="#{bookBacking.bookList}" var="bk" border="1">
 		<h:column>
 			<f:facet name="header">
 				<h:outputText value="ID" />
@@ -67,12 +67,12 @@
 	<h:form>
 		<h:panelGrid columns="2">
 			<h:outputLabel value="Id:" />
-			<h:inputText value="#{bookController.priceChanger.id}" />
+			<h:inputText value="#{bookBacking.priceChanger.id}" />
 			<h:outputLabel value="Price:" />
-			<h:inputText value="#{bookController.priceChanger.price}" />
+			<h:inputText value="#{bookBacking.priceChanger.price}" />
 		</h:panelGrid>
 		<h:commandButton value="Increase the price"
-			action="#{bookController.updateBook}" />
+			action="#{bookBacking.updateBook}" />
 	</h:form>
 
 	<hr />

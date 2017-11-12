@@ -1,4 +1,4 @@
-package hu.gaborbalazs.practice.jsf.bean;
+package hu.gaborbalazs.practice.jsf.backing;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ import hu.gaborbalazs.practice.interceptor.Loggable;
 @Loggable
 @Named
 @RequestScoped
-public class BookController {
+public class BookBacking {
 
 	public class PriceChanger {
 
@@ -45,7 +45,7 @@ public class BookController {
 	private Book book = new Book();
 	private List<Book> bookList = new ArrayList<>();
 
-	public BookController() {
+	public BookBacking() {
 	}
 
 	public String doCreateBook() {

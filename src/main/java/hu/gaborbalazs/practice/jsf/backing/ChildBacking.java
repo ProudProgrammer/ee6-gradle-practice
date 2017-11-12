@@ -1,4 +1,4 @@
-package hu.gaborbalazs.practice.jsf.bean;
+package hu.gaborbalazs.practice.jsf.backing;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import hu.gaborbalazs.practice.interceptor.Loggable;
 @Loggable
 @Named
 @RequestScoped
-public class ChildController {
+public class ChildBacking {
 
 	@Inject
 	private ChildEjb childEJB;
