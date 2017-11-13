@@ -4,18 +4,17 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-<h:head>
-	<title>EE6 Gradle Practice</title>
-</h:head>
-<f:metadata>
-	<f:event type="preRenderView" listener="#{jsfTestBacking.init}" />
-</f:metadata>
-<h:body>
-	<h1>JSF Test</h1>
-	<h:form>
-		<h:outputText value="#{jsfTestBacking.amount}">
-			<f:convertNumber type="percent" />
-		</h:outputText>
-	</h:form>
-</h:body>
+<ui:composition template="template/main_template.xhtml">
+	<ui:define name="title">JSF Test</ui:define>
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{jsfTestBacking.init}" />
+	</f:metadata>
+	<ui:define name="content">
+		<h:form>
+			<h:outputText value="#{jsfTestBacking.amount}">
+				<f:convertNumber type="percent" />
+			</h:outputText>
+		</h:form>
+	</ui:define>
+</ui:composition>
 </html>

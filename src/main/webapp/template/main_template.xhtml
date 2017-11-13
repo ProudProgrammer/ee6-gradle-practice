@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title><ui:insert name="title">EE6 Gradle Practice</ui:insert></title>
+	<style>
+	div.container {
+		width: 100%;
+		border: 1px solid gray;
+	}
+	header, footer {
+		padding: 1em;
+		color: white;
+		background-color: #5396ac;
+		clear: left;
+		text-align: center;
+	}
+	nav {
+		float: left;
+		max-width: 160px;
+		margin: 0;
+		padding: 1em;
+	}
+	article {
+		margin-left: 170px;
+		border-left: 1px solid gray;
+		padding: 1em;
+		overflow: hidden;
+	}
+	</style>
+</h:head>
+<h:body>
+	<div class="container">
+	<header>
+		<h1><ui:insert name="title">EE6 Gradle Practice</ui:insert></h1>
+	</header>
+	<nav>
+		<ui:insert name="nav_bar">Nav Bar</ui:insert>
+	</nav>
+	<article>
+		<ui:insert name="content">Content</ui:insert>
+	</article>
+	<footer> <h:outputText value="EE6 Gradle Practice"
+		style="font-style: italic;" /> 
+	</footer>
+	</div>
+</h:body>
+</html>
