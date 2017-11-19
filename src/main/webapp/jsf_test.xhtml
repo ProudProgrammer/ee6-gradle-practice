@@ -11,9 +11,12 @@
 	</f:metadata>
 	<ui:define name="content">
 		<h:form>
-			<h:outputText value="#{jsfTestBacking.amount}">
-				<f:convertNumber type="percent" />
-			</h:outputText>
+			<h:panelGrid>
+				<h:inputText value="#{jsfTestBacking.text}" />
+				<h:outputText value="#{jsfTestBacking.text}"
+					converter="funnyConverter" />
+				<h:commandButton value="Submit" />
+			</h:panelGrid>
 		</h:form>
 	</ui:define>
 </ui:composition>

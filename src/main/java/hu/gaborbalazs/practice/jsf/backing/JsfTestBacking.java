@@ -10,18 +10,17 @@ import hu.gaborbalazs.practice.interceptor.Loggable;
 @RequestScoped
 public class JsfTestBacking {
 
-	private int amount;
+	private String text;
 
 	public void init() {
-		amount = 100;
 	}
 
-	public int getAmount() {
-		return amount;
+	public String getText() {
+		return text;
 	}
 
-	public void setAmount(int amount) {
-		this.amount = amount;
+	public void setText(String text) {
+		this.text = text;
 	}
 
 }
