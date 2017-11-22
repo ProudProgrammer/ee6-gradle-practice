@@ -12,10 +12,21 @@
 	<ui:define name="content">
 		<h:form>
 			<h:panelGrid>
-				<h:inputText value="#{jsfTestBacking.text}" />
+				<h:messages />
+				<h:panelGroup>
+					<h:outputText value="FunnyConverter: " />
+					<h:inputText value="#{jsfTestBacking.text}" />
+				</h:panelGroup>
 				<h:outputText value="#{jsfTestBacking.text}"
 					converter="funnyConverter" />
-				<h:commandButton value="Submit" />
+				<h:panelGroup>
+					<h:outputText value="ValidateBean(size must be between 2 and 3): " />
+					<f:validateBean validationGroups="hu.gaborbalazs.practice.validation.group.JsfTestValidationGroup">
+						<h:inputText value="#{jsfTestBacking.validatedText}" />
+					</f:validateBean>
+				</h:panelGroup>
+				<h:commandButton value="Submit"
+					actionListener="#{jsfTestBacking.submitListener}" />
 			</h:panelGrid>
 		</h:form>
 	</ui:define>
