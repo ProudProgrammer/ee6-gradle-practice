@@ -26,7 +26,9 @@
 					</f:validateBean>
 				</h:panelGroup>
 				<h:commandButton value="Submit"
-					actionListener="#{jsfTestBacking.submitListener}" />
+					actionListener="#{jsfTestBacking.submitListener}" >
+						<f:ajax execute="@form" render="@form" />
+				</h:commandButton>
 			</h:panelGrid>
 		</h:form>
 	</ui:define>
