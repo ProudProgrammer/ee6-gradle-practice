@@ -1,4 +1,4 @@
-package hu.gaborbalazs.practice.rest;
+package hu.gaborbalazs.practice.rest.service;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
