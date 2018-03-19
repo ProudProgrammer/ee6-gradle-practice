@@ -15,7 +15,7 @@ apply plugin: 'eclipse-wtp'
 repositories {
     // Use jcenter for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
@@ -45,4 +45,9 @@ dependencies {
 	
 	// https://mvnrepository.com/artifact/org.slf4j/slf4j-api
 	compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+	
+	// https://mvnrepository.com/artifact/org.projectlombok/lombok-maven
+	compile group: 'org.projectlombok', name: 'lombok-maven', version: '1.16.20.0', ext: 'pom'
+	
+	compileOnly 'org.projectlombok:lombok:1.16.20'
 }
